@@ -26,6 +26,7 @@ public class BaseBindingAdapter<D, B extends ViewDataBinding> extends RecyclerVi
     protected int mLayoutId;
     protected List<D> mDatas;
     protected LayoutInflater mInfalter;
+    //用于设置Item的事件Presenter
     protected Object ItemPresenter;
 
     public BaseBindingAdapter(Context mContext, int mLayoutId, List mDatas) {
@@ -80,6 +81,11 @@ public class BaseBindingAdapter<D, B extends ViewDataBinding> extends RecyclerVi
         return ItemPresenter;
     }
 
+    /**
+     * 用于设置Item的事件Presenter
+     * @param itemPresenter
+     * @return
+     */
     public BaseBindingAdapter setItemPresenter(Object itemPresenter) {
         ItemPresenter = itemPresenter;
         return this;
