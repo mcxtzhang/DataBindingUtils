@@ -26,6 +26,7 @@ public class BaseBindingAdapter<D, B extends ViewDataBinding> extends RecyclerVi
     protected int mLayoutId;
     protected List<D> mDatas;
     protected LayoutInflater mInfalter;
+    protected Object ItemPresenter;
 
     public BaseBindingAdapter(Context mContext, int mLayoutId, List mDatas) {
         this.mContext = mContext;
@@ -66,6 +67,7 @@ public class BaseBindingAdapter<D, B extends ViewDataBinding> extends RecyclerVi
     @Override
     public void onBindViewHolder(BaseBindingVH<B> holder, int position) {
         holder.getBinding().setVariable(com.mcxtzhang.databindinglib.BR.data, mDatas.get(position));
+        holder.getBinding().setVariable(com.mcxtzhang.databindinglib.BR.itemP, ItemPresenter);
         holder.getBinding().executePendingBindings();
     }
 
@@ -74,7 +76,14 @@ public class BaseBindingAdapter<D, B extends ViewDataBinding> extends RecyclerVi
         return null != mDatas ? mDatas.size() : 0;
     }
 
+    public Object getItemPresenter() {
+        return ItemPresenter;
+    }
 
+    public BaseBindingAdapter setItemPresenter(Object itemPresenter) {
+        ItemPresenter = itemPresenter;
+        return this;
+    }
 
     /**
      * 刷新数据，初始化数据

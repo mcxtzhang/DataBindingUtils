@@ -3,6 +3,8 @@ package com.mcxtzhang.databindingutils.recyclerview;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
+import android.widget.Toast;
 
 import com.mcxtzhang.databindinglib.BaseBindingAdapter;
 import com.mcxtzhang.databindinglib.mul.BaseMulTypeBindingAdapter;
@@ -19,6 +21,23 @@ public class RecyclerViewActivity extends Activity {
     private BaseBindingAdapter mAdapter;
     private List mDatas;
 
+    public class MulTypeItemPresenter {
+        //用官方推荐的方法绑定Click
+        public void onItem1Click(View item1) {
+            Toast.makeText(item1.getContext(), "第一种类型被点击", Toast.LENGTH_SHORT).show();
+        }
+
+        //用lambda绑定Click
+        public void showItem1TvText(String text) {
+            Toast.makeText(RecyclerViewActivity.this, "第一种类型TextView被点击:" + text, Toast.LENGTH_SHORT).show();
+        }
+
+
+        //第二个ItemPresenter我故意没设置进xml里 程序一样可以运行
+        public void onItem2Click(View item2) {
+            Toast.makeText(item2.getContext(), "第二种类型被点击", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +51,7 @@ public class RecyclerViewActivity extends Activity {
 
         //Base 多种Item，连bean都可以不一样，你觉得屌不屌
         //会自动 填充 data 和Item的Presenter进去
-        mBinding.rv.setAdapter(mAdapter = new BaseMulTypeBindingAdapter(this, mDatas = initMulTypeDatas()));
+        mBinding.rv.setAdapter(mAdapter = new BaseMulTypeBindingAdapter(this, mDatas = initMulTypeDatas()).setItemPresenter(new MulTypeItemPresenter()));
 
 
         //就一种Item：新写法 代码更少了，但是总觉得有种约束感 ：
