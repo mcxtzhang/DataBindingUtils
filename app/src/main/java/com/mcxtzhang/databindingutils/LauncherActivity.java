@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.mcxtzhang.databindingutils.customview.CstViewActivity;
 import com.mcxtzhang.databindingutils.databinding.ActivityLauncherBinding;
 import com.mcxtzhang.databindingutils.recyclerview.RecyclerViewActivity;
 
@@ -13,8 +14,8 @@ public class LauncherActivity extends AppCompatActivity {
     ActivityLauncherBinding mBinding;
 
     public class Presenter {
-        public void onMainClick(View view) {
-            //startActivity(new Intent(LauncherActivity.this, MainActivity.class));
+        public void onCstViewClick(View view) {
+            startActivity(new Intent(LauncherActivity.this, CstViewActivity.class));
         }
 
         public void onRvClick(View view) {

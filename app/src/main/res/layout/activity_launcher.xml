@@ -24,8 +24,8 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{p::onMainClick}"
-            android:text="MainActivity"/>
+            android:onClick="@{p::onCstViewClick}"
+            android:text="自定义View"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:onClick="@{p::onAnimAndCheckBoxClick}"
             android:text="动画和CB"/>
-
+<!--
 
         <Button
             android:layout_width="wrap_content"
@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="@{p::onMainClick}"
-            android:text="VarLevelHigherActivity"/>
+            android:text="VarLevelHigherActivity"/>-->
     </LinearLayout>
 </layout>
 
